@@ -154,7 +154,7 @@ struct HashTree {
         }
     };
     Tree* table[hashSize];
-    int size;
+    int size;   
     HashTree() {
         size = 0;
         for (int i = 0; i < hashSize; i++) {
@@ -174,6 +174,7 @@ struct HashTree {
         size++;
     }
     void remove(int value) {
+        if (!contains(value)) return;
         int index = hashFunc(value);
         if (table[index] == nullptr) return;
         table[index]->remove(value);
